@@ -1,18 +1,31 @@
-import prompt from "prompt";
+import scanf from "scanf";
 
-const E = "a,b,X";
-const S = "aa|bX|aXY";
+/* const E = "a,b,X";
+const S = "aa|bX|aXX";
 const X = "ab|b";
 const Y = "b|aa";
-const bigLetters = ["X", "Y"];
+const bigLetters = ["X"]; */
 
-// const {E,S,X} = await  prompt.get(["E","S","X"]);
+console.log("E : ");
+const E = scanf("%s");
+console.log("S : ");
+const S = scanf("%s");
+let paths = { S: S.split("|") };
 
-const paths = {
-  S: S.split("|"),
-  X: X.split("|"),
-  Y: Y.split("|"),
-};
+const bigLetters = E.split(",").filter(
+  (letter) => letter.toUpperCase() == letter
+);
+
+E.split(",").forEach((letter) => {
+  if (letter.toUpperCase() === letter) {
+    console.log(`${letter} : `);
+    let temp = scanf("%s");
+    paths = {
+      ...paths,
+      [letter]: temp.split("|"),
+    };
+  }
+});
 
 let createdWord;
 let createdWords = [];
@@ -52,5 +65,10 @@ paths.S.forEach((SPath) => {
   createWord(SPath);
 });
 
+console.log(`\n\nΣ = {${E}}`);
+console.log(`S -> ${S}`);
+bigLetters.forEach((letter) => {
+  console.log(`${letter} -> ${paths[letter].join("|")}`);
+});
 console.log("Üretilen Kelimeler : " + createdWords);
 console.log("Tekrarlanan Kelimeler : " + repeatedWords);

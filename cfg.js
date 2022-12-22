@@ -1,10 +1,15 @@
 import scanf from "scanf";
 
-/* const E = "a,b,X";
-const S = "aa|bX|aXX";
+/* const E = "a,b,X,Y";
+const S = "aa|bX|aXY|bY";
 const X = "ab|b";
 const Y = "b|aa";
-const bigLetters = ["X"]; */
+const bigLetters = ["X", "Y"];
+const paths = {
+  S: S.split("|"),
+  X: X.split("|"),
+  Y: Y.split("|"),
+}; */
 
 console.log("E : ");
 const E = scanf("%s");
@@ -42,6 +47,7 @@ const createWord = (expression) => {
             control = 1;
             createWord(createdWord);
           } else {
+            console.log("word : " + createdWord + " control : " + control);
             if (control == 1) {
               if (!repeatedWords.find((word) => word === createdWord)) {
                 repeatedWords.push(createdWord);
@@ -53,6 +59,7 @@ const createWord = (expression) => {
           }
         });
       }
+      control = 0;
     });
   } else {
     if (!createdWords.find((word) => word === expression)) {
@@ -71,4 +78,4 @@ bigLetters.forEach((letter) => {
   console.log(`${letter} -> ${paths[letter].join("|")}`);
 });
 console.log("Üretilen Kelimeler : " + createdWords);
-console.log("Tekrarlanan Kelimeler : " + repeatedWords);
+console.log("Tekrarlanan Kelimeler : " + repeatedWords + "\n\n");

@@ -1,14 +1,16 @@
 import scanf from "scanf";
 
 /* const E = "a,b,X,Y";
-const S = "aa|bX|aXY|bY";
-const X = "ab|b";
-const Y = "b|aa";
-const bigLetters = ["X", "Y"];
+const S = "aa|bX|aXX|bYZ|aZ";
+const X = "ab|bb";
+const Y = "a|ba";
+const Z = "a|ab";
+const bigLetters = ["X", "Y", "Z"];
 const paths = {
   S: S.split("|"),
   X: X.split("|"),
   Y: Y.split("|"),
+  Z: Z.split("|"),
 }; */
 
 console.log("E : ");
@@ -47,7 +49,6 @@ const createWord = (expression) => {
             control = 1;
             createWord(createdWord);
           } else {
-            console.log("word : " + createdWord + " control : " + control);
             if (control == 1) {
               if (!repeatedWords.find((word) => word === createdWord)) {
                 repeatedWords.push(createdWord);
@@ -59,13 +60,13 @@ const createWord = (expression) => {
           }
         });
       }
-      control = 0;
     });
   } else {
     if (!createdWords.find((word) => word === expression)) {
       createdWords.push(expression);
     }
   }
+  control = 0;
 };
 
 paths.S.forEach((SPath) => {
@@ -78,4 +79,4 @@ bigLetters.forEach((letter) => {
   console.log(`${letter} -> ${paths[letter].join("|")}`);
 });
 console.log("Üretilen Kelimeler : " + createdWords);
-console.log("Tekrarlanan Kelimeler : " + repeatedWords + "\n\n");
+console.log("Tekrarlanan Kelimeler : " + repeatedWords + "\n");

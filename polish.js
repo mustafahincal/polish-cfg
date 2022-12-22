@@ -7,6 +7,7 @@ let firstItem, secondItem;
 const { input } = await prompt.get("input");
 
 const inputArray = input.split(" ").reverse();
+console.log(inputArray);
 
 const calculate = (operator, x, y) => {
   if (operator === "+") {

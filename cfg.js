@@ -1,6 +1,8 @@
 import scanf from "scanf";
 
-/* const E = "a,b,X,Y";
+/*
+examples datas
+const E = "a,b,X,Y";
 const S = "aa|bX|aXX|bYZ|aZ";
 const X = "ab|bb";
 const Y = "a|ba";
